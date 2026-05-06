@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Нотариальная контора</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; line-height:1.6; color:#222; background:#fff; }
+    header { background:#0f1f35; color:white; padding:20px 60px; display:flex; justify-content:space-between; align-items:center; }
+    nav a { color:white; margin-left:20px; text-decoration:none; }
+    .hero { padding:100px 60px; background:#f7f9fc; }
+    .hero h1 { font-size:42px; margin-bottom:20px; }
+    .btn { display:inline-block; padding:14px 28px; background:#c9a35d; color:#fff; text-decoration:none; border-radius:4px; }
+    section { padding:80px 60px; }
+    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+    .card { padding:24px; border:1px solid #eee; border-radius:8px; }
+    footer { background:#0f1f35; color:white; padding:40px 60px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div><strong>Нотариальная контора</strong></div>
+    <nav>
+      <a href="#services">Услуги</a>
+      <a href="#about">О нас</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Надёжная нотариальная помощь</h1>
+    <p>Оформление документов, доверенности, сделки и консультации.</p>
+    <br>
+    <a href="#contacts" class="btn">Записаться</a>
+  </section>
+
+  <section id="services">
+    <h2>Наши услуги</h2>
+    <br>
+    <div class="services">
+      <div class="card">Оформление доверенностей</div>
+      <div class="card">Заверение документов</div>
+      <div class="card">Сделки с недвижимостью</div>
+      <div class="card">Наследственные дела</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>О нотариусе</h2>
+    <p>Опыт работы, лицензия, индивидуальный подход и соблюдение законодательства.</p>
+  </section>
+
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <p>Адрес: ул. Примерная, 1</p>
+    <p>Телефон: +7 (900) 000-00-00</p>
+    <p>Email: info@example.com</p>
+    <br>
+    <a href="#" class="btn">Оставить заявку</a>
+  </section>
+
+  <footer>
+    © 2026 Нотариальная контора
+  </footer>
+</body>
+</html>
