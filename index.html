@@ -1,67 +1,1116 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Нотариальная контора</title>
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; line-height:1.6; color:#222; background:#fff; }
-    header { background:#0f1f35; color:white; padding:20px 60px; display:flex; justify-content:space-between; align-items:center; }
-    nav a { color:white; margin-left:20px; text-decoration:none; }
-    .hero { padding:100px 60px; background:#f7f9fc; }
-    .hero h1 { font-size:42px; margin-bottom:20px; }
-    .btn { display:inline-block; padding:14px 28px; background:#c9a35d; color:#fff; text-decoration:none; border-radius:4px; }
-    section { padding:80px 60px; }
-    .services { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-    .card { padding:24px; border:1px solid #eee; border-radius:8px; }
-    footer { background:#0f1f35; color:white; padding:40px 60px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Нотариус | Премиум сервис</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: radial-gradient(circle at 10% 30%, #0a1210, #030706);
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 32px;
+}
+
+/* декоративный фон */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(rgba(210, 180, 110, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.gold-text {
+    background: linear-gradient(
+        180deg,
+        #f3ead8 0%,
+        #d8c093 28%,
+        #bb9e5f 55%,
+        #9b7f47 82%,
+        #7f6535 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ЕДИНАЯ КАРТОЧКА (главный контейнер) */
+.prestige-card {
+    max-width: 1800px;
+    width: 100%;
+    background: rgba(12, 28, 22, 0.85);
+    backdrop-filter: blur(18px);
+    border-radius: 32px;
+    border: 1px solid #bb9e5f;
+    box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+}
+
+.prestige-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 32px;
+    pointer-events: none;
+    box-shadow: inset 0 0 0 1px rgba(255, 220, 140, 0.1);
+}
+
+/* ШАПКА */
+.site-header {
+    width: 100%;
+    padding: 32px 48px 24px 48px;
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #eeddbb, #d4af37, #b88d2c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.nav {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: rgba(233, 255, 205, 0.75);
+    transition: 0.2s ease;
+    letter-spacing: 0.4px;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #bb9e5f;
+    transition: width 0.25s ease;
+    border-radius: 2px;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+.nav a:hover {
+    color: #eedcaf;
+    text-shadow: 0 0 8px rgba(187, 158, 95, 0.4);
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: rgba(233, 255, 205, 0.7);
+    text-align: right;
+    font-weight: 450;
+}
+
+.contacts div:first-child {
+    font-weight: 600;
+    font-size: 1rem;
+    color: rgba(245, 225, 160, 0.95);
+    letter-spacing: 0.4px;
+}
+
+/* РАЗДЕЛИТЕЛЬНЫЕ ЛИНИИ */
+.full-width-divider {
+    width: 100%;
+    height: 1px;
+    background: #bb9e5f;
+    opacity: 0.8;
+}
+
+/* БЛОК ГЕРОЙ */
+.hero-content {
+    padding: 48px 48px 48px 48px;
+    text-align: left;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #f1e9cf, #d4b87a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hero-sub {
+    color: rgba(220, 200, 140, 0.85);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    max-width: 650px;
+}
+
+/* ПРЕМИУМ КНОПКА */
+/* НОВЫЙ ПРЕМИУМ СТИЛЬ КНОПОК */
+.gold-button,
+.find-button,
+.cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(
+        -135deg,
+        #7c6334 0%,
+        #9b7f47 18%,
+        #bb9e5f 36%,
+        #d4bb86 52%,
+        #bb9e5f 68%,
+        #8c7340 84%,
+        #6d552c 100%
+    );
+    border: none;
+    border-radius: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #2c2416;
+    overflow: hidden;
+    text-decoration: none;
+
+    box-shadow:
+        0 12px 22px rgba(0, 0, 0, 0.35),
+        inset 0 2px 3px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(70, 45, 10, 0.3),
+        0 0 0 1px rgba(255, 215, 140, 0.2),
+        0 0 15px rgba(255, 200, 100, 0.1);
+
+    transition: all 0.2s ease;
+}
+
+.all-services-btn span {
+    background: linear-gradient(
+        180deg,
+        #f3ead8 0%,
+        #d8c093 28%,
+        #bb9e5f 55%,
+        #9b7f47 82%,
+        #7f6535 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.all-services-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 136px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid rgba(187, 158, 95, 0.8);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s ease;
+    text-decoration: none; /* убирает подчеркивание */
+}
+
+.cta {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    margin-top: -18px;
+    padding: 48px 20px 12px;
+
+    border-radius: 0 0 22px 22px;
+    z-index: 1;
+}
+
+.cta::after {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    inset: 0;
+}
+
+.gold-button::before,
+.find-button::before,
+.cta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 245, 190, 0.25) 30%,
+        rgba(255, 255, 210, 0.5) 50%,
+        rgba(255, 245, 190, 0.2) 70%,
+        transparent 100%
+    );
+
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.all-services-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 245, 190, 0.35) 50%,
+        transparent 100%
+    );
+
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.gold-button::after,
+.find-button::after,
+ {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 15px;
+    background: radial-gradient(circle at 20% 25%, rgba(255, 220, 130, 0.4), transparent 70%);
+    opacity: 0.5;
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.gold-button:hover,
+.find-button:hover,
+.cta:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5),
+        inset 0 -5px 10px rgba(70, 45, 10, 0.35),
+        0 0 0 1px rgba(255, 225, 150, 0.5),
+        0 0 22px rgba(255, 200, 100, 0.25);
+}
+
+.all-services-btn:hover {
+    background: linear-gradient(
+        -135deg,
+        #7c6334 0%,
+        #9b7f47 18%,
+        #bb9e5f 36%,
+        #d4bb86 52%,
+        #bb9e5f 68%,
+        #8c7340 84%,
+        #6d552c 100%
+    );
+
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5),
+        inset 0 -5px 10px rgba(70, 45, 10, 0.35),
+        0 0 0 1px rgba(255, 225, 150, 0.5),
+        0 0 22px rgba(255, 200, 100, 0.25);
+
+    transform: translateY(-2px);
+}
+
+/* при hover текст становится тёмным */
+.all-services-btn:hover span {
+    -webkit-text-fill-color: #2c2416;
+    color: #2c2416;
+}
+
+.gold-button:active,
+.find-button:active,
+.all-services-btn:active,
+.cta:active {
+    transform: translateY(2px);
+}
+
+
+
+.find-button {
+    padding: 18px 34px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px; /* чтобы не схлопывались */
+}
+
+.gold-button {   
+    padding: 28px 124px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px; /* чтобы не схлопывались */
+}
+
+
+.cta::after {
+    content: "ПОДРОБНЕЕ";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 14px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    color: #2c2416;
+}
+
+.gold-button span,
+.find-button span, {
+    position: relative;
+    z-index: 3;
+    background: linear-gradient(
+        135deg,
+        #241d0f 0%,
+        #3f2e18 25%,
+        #5a4325 50%,
+        #3f2e18 75%,
+        #241d0f 100%
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.decor-line {
+    width: 80px;
+    height: 2px;
+    background: #bb9e5f;
+    margin-top: 40px;
+    border-radius: 3px;
+    opacity: 0.5;
+}
+
+/* СЕКЦИЯ УСЛУГ */
+.services-section {
+    padding: 48px 48px 48px 48px;
+}
+
+.services-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #eedcaf;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.services-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+/* левая линия */
+.services-title::before,
+.services-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    max-width: 160px;
+}
+
+.services-title::before {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(187, 158, 95, 0.85)
+    );
+}
+
+.services-title::after {
+    background: linear-gradient(
+        90deg,
+        rgba(187, 158, 95, 0.85),
+        transparent
+    );
+}
+
+/* КАРУСЕЛЬ (без полосы прокрутки) */
+.carousel-container {
+    width: 100%;
+}
+
+.carousel-wrapper {
+    width: 100%;
+    overflow: visible;
+}
+
+.carousel-wrapper::-webkit-scrollbar {
+    display: none; /* скрываем полосу прокрутки Chrome/Safari */
+}
+
+.services-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+/* СТИЛЬ КАРТОЧКИ (как в вашем примере Imperial Green) */
+.pricing-card {
+    width: 100%;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.pricing-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(80, 255, 120, 0.12);
+    pointer-events: none;
+    box-shadow: inset 0 0 25px rgba(0, 255, 100, 0.05), 0 0 15px rgba(255, 190, 80, 0.06);
+}
+
+.inner-card {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(52, 78, 67, 0.20) 0%, rgba(22, 43, 36, 0.92) 45%, rgba(11, 24, 20, 0.98) 100%), #162b24;
+    backdrop-filter: blur(18px);
+    border-radius: 22px;
+    padding: 28px 22px 22px;
+    position: relative;
+    z-index: 2;
+    border: none;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.42), 0 18px 22px rgba(0, 0, 0, 0.34), 0 30px 38px rgba(0, 0, 0, 0.22), 0 0 18px rgba(187, 158, 95, 0.05), inset 0 0 18px rgba(233, 224, 207, 0.03), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.inner-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: 22px;
+    background: radial-gradient(circle at 15% 15%, rgba(255, 215, 140, 0.95) 0%, rgba(210, 170, 90, 0.6) 18%, rgba(160, 120, 60, 0.25) 35%, rgba(120, 90, 40, 0.10) 55%, transparent 75%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    border-radius: 22px;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(255, 200, 120, 0.15)) drop-shadow(0 0 14px rgba(255, 180, 80, 0.08));
+}
+
+.inner-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    pointer-events: none;
+    background: radial-gradient(circle at 15% 15%, rgba(255, 215, 140, 0.18) 0%, rgba(187, 158, 95, 0.10) 18%, rgba(120, 90, 40, 0.05) 35%, rgba(0, 0, 0, 0) 70%);
+    mix-blend-mode: screen;
+    filter: blur(2px);
+}
+
+.plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: auto; /* одинаковая высота блока */
+    text-align: center;
+    margin-bottom: 0px;
+    gap: 6px;
+}
+
+
+
+.icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin-top: 0px;
+
+    font-size: 14px;
+
+    background: linear-gradient(
+        180deg,
+        #f3ead8 0%,
+        #d8c093 28%,
+        #bb9e5f 55%,
+        #9b7f47 82%,
+        #7f6535 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.icon::before,
+.icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+.icon::before {
+    right: calc(50% + 16px);
+    background: linear-gradient(to left, rgba(187,158,95,0.75), transparent);
+}
+
+.icon::after {
+    left: calc(50% + 16px);
+    background: linear-gradient(to right, rgba(187,158,95,0.75), transparent);
+}
+
+.plan-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1.45;
+    text-transform: uppercase;
+    text-align: center;
+
+    min-height: 42px; /* резерв под 2 строки */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    max-width: 240px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 0;
+}
+
+.price {
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 0.95;
+    letter-spacing: -0.5px;
+    background: linear-gradient(180deg, #f3ead8 0%, #d8c093 28%, #bb9e5f 55%, #9b7f47 82%, #7f6535 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.note {
+    font-size: 10px;
+    margin-top: 6px;
+    color: #e9e0cf;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+}
+
+.prices {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.price-block.second {
+    position: relative;
+    padding-top: 18px;
+    width: 100%;
+}
+
+.price-block.second::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(187, 158, 95, 0.55) 0%, rgba(187, 158, 95, 0.30) 45%, rgba(187, 158, 95, 0.08) 80%, rgba(187, 158, 95, 0) 100%);
+}
+
+/* КНОПКИ ПРОЛИСТЫВАНИЯ (стрелки) */
+.scroll-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(16, 35, 28, 0.9);
+    border: 1px solid rgba(187, 158, 95, 0.65);
+
+    color: #d4af37;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.35),
+        inset 0 1px 1px rgba(255,255,255,0.08);
+
+    transition: all 0.2s ease;
+    z-index: 20;
+}
+
+#scrollLeftBtn {
+    left: 0;
+}
+
+#scrollRightBtn {
+    right: 0;
+}
+
+.scroll-btn:hover {
+    transform: translateY(-50%) scale(1.06);
+    background: rgba(187, 158, 95, 0.18);
+    color: #fff3cf;
+}
+
+/* КНОПКА "ВСЕ УСЛУГИ" */
+.all-services-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+
+
+.all-services-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* БЛОК О НОТАРИУСЕ + КОНТАКТЫ */
+.info-section {
+    padding: 48px 48px 56px 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+}
+
+.about-notary {
+    flex: 2;
+    min-width: 260px;
+    background: rgba(10, 22, 18, 0.55);
+    border-radius: 28px;
+    border: 1px solid rgba(187, 158, 95, 0.4);
+    padding: 32px 32px;
+    backdrop-filter: blur(4px);
+    transition: 0.2s;
+}
+
+.about-notary:hover {
+    border-color: #bb9e5f;
+    background: rgba(15, 30, 24, 0.7);
+}
+
+.about-title {
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #eedcaf;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    border-left: 3px solid #bb9e5f;
+    padding-left: 18px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.about-text {
+    color: rgba(220, 200, 140, 0.85);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.about-signature {
+    font-style: italic;
+    color: #d4af37;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.contact-card {
+    flex: 1.2;
+    min-width: 280px;
+    background: rgba(10, 22, 18, 0.55);
+    border-radius: 28px;
+    border: 1px solid rgba(187, 158, 95, 0.4);
+    padding: 32px 28px;
+    backdrop-filter: blur(4px);
+    transition: 0.2s;
+}
+
+.contact-card:hover {
+    border-color: #bb9e5f;
+    background: rgba(15, 30, 24, 0.7);
+}
+
+.contact-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #eedcaf;
+    margin-bottom: 24px;
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+    color: rgba(220, 200, 140, 0.85);
+    font-size: 0.9rem;
+    word-break: break-word;
+}
+
+.contact-icon {
+    font-size: 1.3rem;
+    min-width: 28px;
+    color: #d4af37;
+}
+
+.contact-text {
+    line-height: 1.4;
+}
+
+.work-hours {
+    margin-top: 12px;
+    border-top: 1px dashed rgba(187, 158, 95, 0.4);
+    padding-top: 16px;
+}
+
+.service-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 28px 0 26px;
+}
+
+.service-divider::before,
+.service-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+}
+
+.service-divider::before {
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.service-divider::after {
+    background: linear-gradient(
+        to left,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.diamond {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: linear-gradient(
+        135deg,
+        #f3ead8 0%,
+        #d8c093 30%,
+        #bb9e5f 65%,
+        #7f6535 100%
+    );
+
+    box-shadow:
+        0 0 8px rgba(255, 215, 120, 0.22),
+        inset 0 1px 1px rgba(255,255,255,0.35);
+}
+
+
+/* АДАПТИВ */
+@media (max-width: 1199px) {
+    body { padding: 30px 24px; }
+    .hero-title { font-size: 2.5rem; }
+    .hero-content { padding: 40px 36px; }
+    .services-section { padding: 40px 36px; }
+    .info-section { padding: 40px 36px 48px; }
+}
+
+@media (max-width: 900px) {
+    body { padding: 24px 20px; }
+    .header-inner { justify-content: center; gap: 24px; }
+    .nav { order: 3; width: 100%; justify-content: center; gap: 24px; margin-top: 10px; }
+    .contacts { flex-direction: row; gap: 28px; text-align: center; order: 2; }
+    .logo { order: 1; font-size: 1.6rem; }
+    .hero-title { font-size: 2rem; }
+    .info-section { flex-direction: column; }
+    .about-notary, .contact-card { width: 100%; }
+}
+
+@media (max-width: 700px) {
+    .services-cards { gap: 16px; }
+    .pricing-card { width: 280px; }
+    .price { font-size: 32px; }
+    .plan-name { font-size: 11px; }
+    .inner-card { padding: 20px 16px; }
+    .scroll-btn { width: 36px; height: 36px; font-size: 1.4rem; }
+}
+
+@media (max-width: 600px) {
+    body { padding: 16px 12px; }
+    .hero-title { font-size: 1.7rem; }
+    .services-title { font-size: 1.4rem; }
+}
+</style>
 </head>
 <body>
-  <header>
-    <div><strong>Нотариальная контора</strong></div>
-    <nav>
-      <a href="#services">Услуги</a>
-      <a href="#about">О нас</a>
-      <a href="#contacts">Контакты</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>Надёжная нотариальная помощь</h1>
-    <p>Оформление документов, доверенности, сделки и консультации.</p>
-    <br>
-    <a href="#contacts" class="btn">Записаться</a>
-  </section>
+<div class="prestige-card">
+    <!-- ШАПКА -->
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="logo">НОТАРИУС</div>
+            <nav class="nav">
+                <a href="#">Нотариальная контора</a>
+                <a href="#">Услуги и тарифы</a>
+                <a href="#">Правовая информация</a>
+                <a href="#">Контакты</a>
+            </nav>
+            <div class="contacts">
+                <div>+7 (999) 123-45-67</div>
+                <div>email@mail.ru</div>
+            </div>
+        </div>
+    </header>
 
-  <section id="services">
-    <h2>Наши услуги</h2>
-    <br>
-    <div class="services">
-      <div class="card">Оформление доверенностей</div>
-      <div class="card">Заверение документов</div>
-      <div class="card">Сделки с недвижимостью</div>
-      <div class="card">Наследственные дела</div>
+    <div class="full-width-divider"></div>
+
+    <!-- БЛОК ГЕРОЙ -->
+    <div class="hero-content">
+        <h1 class="hero-title">Нотариальные услуги<br>в Санкт-Петербурге</h1>
+        <p class="hero-sub">Экспертиза, надёжность и безупречный сервис</p>
+        <a href="#" class="gold-button"><span>Записаться на приём</span></a>
+        <div class="decor-line"></div>
     </div>
-  </section>
 
-  <section id="about">
-    <h2>О нотариусе</h2>
-    <p>Опыт работы, лицензия, индивидуальный подход и соблюдение законодательства.</p>
-  </section>
+    <div class="full-width-divider"></div>
 
-  <section id="contacts">
-    <h2>Контакты</h2>
-    <p>Адрес: ул. Примерная, 1</p>
-    <p>Телефон: +7 (900) 000-00-00</p>
-    <p>Email: info@example.com</p>
-    <br>
-    <a href="#" class="btn">Оставить заявку</a>
-  </section>
+    <!-- НОТАРИАЛЬНЫЕ ДЕЙСТВИЯ (КАРУСЕЛЬ) -->
+    <div class="services-section">
+        <h2 class="services-title">НОТАРИАЛЬНЫЕ ДЕЙСТВИЯ</h2>
+        <div class="carousel-container">
+            
+            <div class="carousel-wrapper" id="carouselWrapper">
+                <div class="services-cards" id="servicesCards">
+                    <!-- КАРТОЧКА 1: СДЕЛКИ С НЕДВИЖИМОСТЬЮ -->
+                    <div class="pricing-card">
+                        <div class="inner-card">
+                            <div class="plan">
+    <div>
+        <div class="plan-name gold-text">СДЕЛКИ С НЕДВИЖИМОСТЬЮ</div>
+    </div>
+    <div class="icon gold-text">◆</div>
+</div>
+                            <div class="bottom">
+                            </div>
+                        </div>
+                        <button class="cta" aria-label="Подробнее"></button>
+                    </div>
 
-  <footer>
-    © 2026 Нотариальная контора
-  </footer>
+                    <!-- КАРТОЧКА 2: ДОВЕРЕННОСТЬ -->
+                    <div class="pricing-card">
+                        <div class="inner-card">
+                            <div class="plan">
+                                
+                                <div><div class="plan-name gold-text">ДОВЕРЕННОСТЬ</div></div>
+<div class="icon gold-text">◆</div>
+                            </div>
+                            <div class="bottom">
+                                
+                            </div>
+                        </div>
+                        <button class="cta" aria-label="Подробнее"></button>
+                    </div>
+
+                    <!-- КАРТОЧКА 3: Удостоверение договоров -->
+                    <div class="pricing-card">
+                        <div class="inner-card">
+                            <div class="plan">
+                                
+                                <div><div class="plan-name gold-text">Удостоверение договоров</div></div>
+<div class="icon gold-text">◆</div>
+                            </div>
+                            <div class="bottom">
+                                
+                            </div>
+                        </div>
+                        <button class="cta" aria-label="Подробнее"></button>
+                    </div>
+
+                    <!-- КАРТОЧКА 4: НАСЛЕДСТВО -->
+                    <div class="pricing-card">
+                        <div class="inner-card">
+                            <div class="plan">
+                                
+                                <div><div class="plan-name gold-text">НАСЛЕДСТВО</div></div>
+<div class="icon gold-text">◆</div>
+                            </div>
+                            <div class="bottom">
+                                
+                            </div>
+                        </div>
+                        <button class="cta" aria-label="Подробнее"></button>
+                    </div>
+
+                    <!-- КАРТОЧКА 5: БРАЧНЫЙ ДОГОВОР -->
+                    <div class="pricing-card">
+                        <div class="inner-card">
+                            <div class="plan">
+                                
+                                <div><div class="plan-name gold-text">БРАЧНЫЙ ДОГОВОР</div></div>
+<div class="icon gold-text">◆</div>
+                            </div>
+                            <div class="bottom">
+                                
+                            </div>
+                        </div>
+                        <button class="cta" aria-label="Подробнее"></button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- КНОПКА ВСЕ УСЛУГИ -->
+        <div class="all-services-btn-wrapper">
+            <a href="#" class="all-services-btn"><span>Все услуги</span></a>
+        </div>
+    </div>
+
+    <div class="full-width-divider"></div>
+
+    <!-- БЛОК: О НОТАРИУСЕ + КОНТАКТЫ -->
+    <div class="info-section">
+        <div class="about-notary">
+            <div class="about-title">О нотариусе</div>
+            <div class="about-text">
+                Более 15 лет безупречной работы в сфере нотариальных услуг. Индивидуальный подход, 
+                юридическая точность и полное сопровождение сделок любого уровня сложности. 
+                Член Нотариальной палаты, гарантия сохранности документов и конфиденциальности.
+            </div>
+            <div class="about-text">
+                Современные технологии, оперативное оформление и выезд к клиенту 
+                (по предварительной договорённости). Каждая услуга – под защитой закона.
+            </div>
+            <div class="about-signature">Елена Викторовна Серебрякова, нотариус</div>
+        </div>
+
+        <div class="contact-card">
+            <div class="contact-title">Контактная информация</div>
+            <div class="contact-item"><span class="contact-icon">📍</span><span class="contact-text">Москва, ул. Тверская, д. 15, офис 302</span></div>
+            <div class="contact-item"><span class="contact-icon">📞</span><span class="contact-text">+7 (999) 123-45-67</span></div>
+            <div class="contact-item"><span class="contact-icon">✉️</span><span class="contact-text">notary@premiummail.ru</span></div>
+            <div class="work-hours">
+                <div class="contact-item"><span class="contact-icon">🕒</span><span class="contact-text">Пн–Пт: 9:00 – 19:00<br>Сб: 10:00 – 16:00<br>Вс: выходной</span></div>
+            </div>
+            <a href="#" class="find-button">Как нас найти →</a>
+        </div>
+    </div>
+
+    <div class="full-width-divider"></div>
+</div>
+
+
+
 </body>
 </html>
