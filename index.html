@@ -92,15 +92,29 @@ body::before {
 }
 
 .logo {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    background: linear-gradient(135deg, #eeddbb, #d4af37, #b88d2c);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    font-family: 'Cormorant Garamond', serif;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo img {
+    height: 52px;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text strong {
+    color: white;
+    font-size: 18px;
+}
+
+.logo-text span {
+    font-size: 12px;
+    opacity: 0.7;
+    color: #c8a45d;
 }
 
 .nav {
@@ -330,8 +344,7 @@ body::before {
 }
 
 .gold-button::after,
-.find-button::after,
- {
+.find-button::after {
     content: "";
     position: absolute;
     inset: -1px;
@@ -430,7 +443,7 @@ body::before {
 }
 
 .gold-button span,
-.find-button span, {
+.find-button span {
     position: relative;
     z-index: 3;
     background: linear-gradient(
@@ -959,7 +972,13 @@ body::before {
     <!-- ШАПКА -->
     <header class="site-header">
         <div class="header-inner">
-            <div class="logo">НОТАРИУС</div>
+<div class="logo">
+    <img src="assets/images/logo.svg" alt="Логотип">
+    <div class="logo-text">
+        <strong>Нотариальная контора</strong>
+        <span>Юридическая точность и доверие</span>
+    </div>
+</div>
             <nav class="nav">
                 <a href="#">Нотариальная контора</a>
                 <a href="#">Услуги и тарифы</a>
@@ -980,7 +999,7 @@ body::before {
         <h1 class="hero-title">Нотариальные услуги<br>в Санкт-Петербурге</h1>
         <p class="hero-sub">Экспертиза, надёжность и безупречный сервис</p>
         <a href="#" class="gold-button"><span>Записаться на приём</span></a>
-        <div class="decor-line"></div>
+
     </div>
 
     <div class="full-width-divider"></div>
