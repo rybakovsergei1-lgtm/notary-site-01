@@ -39,6 +39,12 @@ body::before {
     z-index: 0;
 }
 
+h1, h2, h3, .hero-title, .services-title, .about-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
 .gold-text {
     background: linear-gradient(
         180deg,
@@ -51,6 +57,17 @@ body::before {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.site-header {
+    background: linear-gradient(135deg,
+        rgba(52, 78, 67, 0.20) 0%,
+        rgba(22, 43, 36, 0.92) 45%,
+        rgba(11, 24, 20, 0.98) 100%
+    ), #162b24;
+
+    border-bottom: 1px solid rgba(187, 158, 95, 0.25);
+
 }
 
 /* ЕДИНАЯ КАРТОЧКА (главный контейнер) */
@@ -98,7 +115,7 @@ body::before {
 }
 
 .logo img {
-    height: 52px;
+    height: 62px;
 }
 
 .logo-text {
@@ -108,11 +125,14 @@ body::before {
 
 .logo-text strong {
     color: white;
-    font-size: 18px;
+    font-size: 25px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 .logo-text span {
-    font-size: 12px;
+    font-size: 16px;
     opacity: 0.7;
     color: #c8a45d;
 }
@@ -124,46 +144,44 @@ body::before {
 }
 
 .nav a {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 6px;
     text-decoration: none;
     font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    color: rgba(233, 255, 205, 0.75);
-    transition: 0.2s ease;
-    letter-spacing: 0.4px;
-    position: relative;
-    padding-bottom: 6px;
+    color: rgba(220, 200, 140, 0.85);
+    transition: color 0.3s ease;
 }
 
+/* линия из центра */
 .nav a::after {
-    content: "";
+    content: '';
     position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
-    left: 0;
     width: 0;
-    height: 2px;
+    height: 1px;
     background: #bb9e5f;
-    transition: width 0.25s ease;
     border-radius: 2px;
+    transition: width 0.35s ease;
+    box-shadow: 0 0 8px rgba(187, 158, 95, 0.25);
 }
 
+/* hover линия */
 .nav a:hover::after {
     width: 100%;
 }
 
+/* hover текст */
 .nav a:hover {
     color: #eedcaf;
     text-shadow: 0 0 8px rgba(187, 158, 95, 0.4);
 }
 
-.contacts {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-size: 0.9rem;
-    color: rgba(233, 255, 205, 0.7);
-    text-align: right;
-    font-weight: 450;
-}
+
 
 .contacts div:first-child {
     font-weight: 600;
@@ -182,12 +200,20 @@ body::before {
 
 /* БЛОК ГЕРОЙ */
 .hero-content {
-    padding: 48px 48px 48px 48px;
-    text-align: left;
+    position: relative;
+    padding: 82px 48px 96px 100px;
+    min-height: 720px;
+
+    background: url("assets/images/main_Img.png") no-repeat center right;
+    background-size: 100%;
+
+    overflow: hidden;
+    z-index: 1;
 }
 
+
 .hero-title {
-    font-size: 3rem;
+    font-size: 4.5rem;
     font-weight: 500;
     background: linear-gradient(135deg, #f1e9cf, #d4b87a);
     background-clip: text;
@@ -202,13 +228,51 @@ body::before {
 .hero-sub {
     color: rgba(220, 200, 140, 0.85);
     font-size: 1.1rem;
-    letter-spacing: 0.5px;
+    letter-spacing: 1.8px;
     margin-bottom: 32px;
     max-width: 650px;
+    line-height: 1.6;
+    width: 600px;
+}
+
+.hero-image {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    margin: 32px 0 48px;
+    overflow: hidden;
+    border-radius: 24px;
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    background: #0e2a22;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.hero-image img {
+    height: 100%;
+    width: auto;
+    object-fit: contain;
+    object-position: right center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+        90deg,
+        #102820 0%,
+        #16382d 28%,
+        rgba(22, 56, 45, 0.88) 45%,
+        rgba(22, 56, 45, 0.35) 65%,
+        transparent 100%
+    );
 }
 
 /* ПРЕМИУМ КНОПКА */
-/* НОВЫЙ ПРЕМИУМ СТИЛЬ КНОПОК */
 .gold-button,
 .find-button,
 .cta {
@@ -230,7 +294,7 @@ body::before {
     border-radius: 14px;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 1.2px;
     text-transform: uppercase;
     cursor: pointer;
@@ -268,9 +332,10 @@ body::before {
     align-items: center;
     justify-content: center;
     padding: 22px 136px;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 1.3px;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.2px;
     text-transform: uppercase;
     border-radius: 14px;
     background: transparent;
@@ -417,7 +482,7 @@ body::before {
 }
 
 .gold-button {   
-    padding: 28px 124px;
+    padding: 30px 187px;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 1.2px;
@@ -791,7 +856,18 @@ body::before {
 .about-notary {
     flex: 2;
     min-width: 260px;
-    background: rgba(10, 22, 18, 0.55);
+    position: relative;
+    overflow: hidden;
+
+    background:
+                linear-gradient(to right,
+            rgba(8, 18, 14, 0.85) 0%,
+            rgba(8, 18, 14, 0.55) 35%,
+            rgba(8, 18, 14, 0.15) 60%,
+            rgba(8, 18, 14, 0) 100%
+        ),
+        url("assets/images/cabinet_not.png") center center / cover no-repeat;
+
     border-radius: 28px;
     border: 1px solid rgba(187, 158, 95, 0.4);
     padding: 32px 32px;
@@ -801,7 +877,14 @@ body::before {
 
 .about-notary:hover {
     border-color: #bb9e5f;
-    background: rgba(15, 30, 24, 0.7);
+    background:
+        linear-gradient(to right,
+            rgba(8, 18, 14, 0.85) 0%,
+            rgba(8, 18, 14, 0.55) 35%,
+            rgba(8, 18, 14, 0.15) 60%,
+            rgba(8, 18, 14, 0) 100%
+        ),
+        url("assets/images/cabinet_not.png") center center / cover no-repeat;
 }
 
 .about-title {
@@ -820,13 +903,19 @@ body::before {
     line-height: 1.6;
     font-size: 0.95rem;
     margin-bottom: 20px;
+    width: 50%;
+    text-align: justify;
+    hyphens: auto;
+    word-spacing: normal;
 }
 
 .about-signature {
-    font-style: italic;
-    color: #d4af37;
+    font-style: normal;
+    color: #eedcaf;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
     margin-top: 20px;
-    font-size: 0.9rem;
 }
 
 .contact-card {
@@ -846,13 +935,15 @@ body::before {
 }
 
 .contact-title {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: 500;
     color: #eedcaf;
-    margin-bottom: 24px;
-    text-align: center;
+    margin-bottom: 20px;
+ 
     letter-spacing: 1px;
     font-family: 'Cormorant Garamond', serif;
+    border-left: 3px solid #bb9e5f;
+    padding-left: 18px;
 }
 
 .contact-item {
@@ -929,6 +1020,308 @@ body::before {
         inset 0 1px 1px rgba(255,255,255,0.35);
 }
 
+.contacts {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* всё уходит вправо */
+    gap: 24px;
+}
+
+.contacts-left {
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    flex-direction: column;
+    align-items: flex-end; /* выравнивание под кнопку */
+    gap: 6px;
+}
+
+.phone {
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.78);
+    letter-spacing: 0.4px;
+}
+
+.email {
+    font-size: 0.9rem;
+    font-family: 'Montserrat', sans-serif;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+/* кнопка "заказать звонок" */
+.callback-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px 36px;
+
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(187, 158, 95, 0.8);
+    background: transparent;
+
+    text-decoration: none;
+
+    background-image: linear-gradient(
+        180deg,
+        #f3ead8 0%,
+        #d8c093 28%,
+        #bb9e5f 55%,
+        #9b7f47 82%,
+        #7f6535 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+/* hover как у "ВСЕ УСЛУГИ" */
+.callback-btn:hover {
+    background: linear-gradient(
+        -135deg,
+        #7c6334 0%,
+        #9b7f47 18%,
+        #bb9e5f 36%,
+        #d4bb86 52%,
+        #bb9e5f 68%,
+        #8c7340 84%,
+        #6d552c 100%
+    );
+
+    -webkit-text-fill-color: #2c2416;
+    color: #2c2416;
+
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.4),
+        0 0 22px rgba(255, 200, 100, 0.25);
+}
+
+.hero-subline {
+    display: block;
+    margin-left: 43px; /* регулируешь отступ */
+}
+
+.hero-sub,
+.gold-button {
+    margin-left: 43px;
+}
+
+.license-info {
+    margin-top: 34px;
+    margin-left: 43px;
+    max-width: 640px;
+    color: rgba(220, 200, 140, 0.58);
+    font-size: 13px;
+    line-height: 1.7;
+    letter-spacing: 0.35px;
+    font-family: 'Montserrat', sans-serif;
+    border-left: 1px solid rgba(187, 158, 95, 0.35);
+    padding-left: 18px;
+}
+
+.license-info div {
+    margin-bottom: 6px;
+}
+
+.hero-divider {
+    display: flex;
+    align-items: center;
+    width: 585px;
+    margin: 22px 0 26px 43px;
+    gap: 18px;
+}
+
+.hero-divider::before,
+.hero-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+}
+
+.hero-divider::before {
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.hero-divider::after {
+    background: linear-gradient(
+        to left,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.hero-diamond {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: linear-gradient(
+        135deg,
+        #f3ead8 0%,
+        #d8c093 30%,
+        #bb9e5f 65%,
+        #7f6535 100%
+    );
+
+    box-shadow:
+        0 0 8px rgba(255, 215, 120, 0.22),
+        inset 0 1px 1px rgba(255,255,255,0.35);
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 22px 136px;
+    margin-top: 24px;
+
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid rgba(187, 158, 95, 0.8);
+
+    cursor: pointer;
+    position: relative;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.about-btn span {
+    background: linear-gradient(
+        180deg,
+        #f3ead8 0%,
+        #d8c093 28%,
+        #bb9e5f 55%,
+        #9b7f47 82%,
+        #7f6535 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* градиентная обводка как у ВСЕ УСЛУГИ */
+.about-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 245, 190, 0.35) 50%,
+        transparent 100%
+    );
+
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+/* hover как у всех премиум-кнопок */
+.about-btn:hover {
+    background: linear-gradient(
+        -135deg,
+        #7c6334 0%,
+        #9b7f47 18%,
+        #bb9e5f 36%,
+        #d4bb86 52%,
+        #bb9e5f 68%,
+        #8c7340 84%,
+        #6d552c 100%
+    );
+
+    transform: translateY(-2px);
+    box-shadow:
+        0 16px 28px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.5),
+        inset 0 -5px 10px rgba(70, 45, 10, 0.35),
+        0 0 0 1px rgba(255, 225, 150, 0.5),
+        0 0 22px rgba(255, 200, 100, 0.25);
+}
+
+.about-btn:hover span {
+    -webkit-text-fill-color: #2c2416;
+    color: #2c2416;
+}
+
+.about-btn:active {
+    transform: translateY(1px);
+}
+
+.about-divider {
+    display: flex;
+    align-items: center;
+    width: 40%;
+    margin: 18px 0 22px;
+    gap: 18px;
+}
+
+.about-divider::before,
+.about-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+}
+
+.about-divider::before {
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.about-divider::after {
+    background: linear-gradient(
+        to left,
+        transparent,
+        rgba(187, 158, 95, 0.75)
+    );
+}
+
+.about-diamond {
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+    background: linear-gradient(
+        135deg,
+        #f3ead8 0%,
+        #d8c093 30%,
+        #bb9e5f 65%,
+        #7f6535 100%
+    );
+
+    box-shadow:
+        0 0 8px rgba(255, 215, 120, 0.22),
+        inset 0 1px 1px rgba(255,255,255,0.35);
+}
+
 
 /* АДАПТИВ */
 @media (max-width: 1199px) {
@@ -956,6 +1349,7 @@ body::before {
     .price { font-size: 32px; }
     .plan-name { font-size: 11px; }
     .inner-card { padding: 20px 16px; }
+    .logo img { height: 75px; }
     .scroll-btn { width: 36px; height: 36px; font-size: 1.4rem; }
 }
 
@@ -975,20 +1369,24 @@ body::before {
 <div class="logo">
     <img src="assets/images/logo.svg" alt="Логотип">
     <div class="logo-text">
-        <strong>Нотариальная контора</strong>
-        <span>Юридическая точность и доверие</span>
+        <strong>НОТАРИУС</strong>
+        <span>Серебрякова Е.В.</span>
     </div>
 </div>
             <nav class="nav">
-                <a href="#">Нотариальная контора</a>
-                <a href="#">Услуги и тарифы</a>
-                <a href="#">Правовая информация</a>
-                <a href="#">Контакты</a>
+                <a href="#">НОТАРИАЛЬНАЯ КОНТОРА</a>
+                <a href="#">УСЛУГИ И ТАРИФЫ</a>
+                <a href="#">ПРАВОВАЯ ИНФОРМАЦИЯ</a>
+                <a href="#">КОНТАКТЫ</a>
             </nav>
             <div class="contacts">
-                <div>+7 (999) 123-45-67</div>
-                <div>email@mail.ru</div>
-            </div>
+    <div class="contacts-left">
+        <div class="phone">+7 (999) 123-45-67</div>
+        <div class="email">email@mail.ru</div>
+    </div>
+
+    <a href="#callback" class="callback-btn">ЗАКАЗАТЬ ЗВОНОК</a>
+</div>
         </div>
     </header>
 
@@ -996,10 +1394,22 @@ body::before {
 
     <!-- БЛОК ГЕРОЙ -->
     <div class="hero-content">
-        <h1 class="hero-title">Нотариальные услуги<br>в Санкт-Петербурге</h1>
-        <p class="hero-sub">Экспертиза, надёжность и безупречный сервис</p>
-        <a href="#" class="gold-button"><span>Записаться на приём</span></a>
+        <h1 class="hero-title">
+    Нотариальные услуги<br>
+    <span class="hero-subline">в Санкт-Петербурге</span>
+</h1>
 
+<div class="hero-divider">
+    <span class="hero-diamond"></span>
+</div>
+        <p class="hero-sub">Юридическая точность. Решения, которым доверяют.</p>
+        <a href="#" class="gold-button"><span>Записаться на приём</span></a>
+        <div class="license-info">
+    Регистрационный номер 19/356-н/78<br>
+    Лицензия № 412 от 07.11.2010<br>
+    Приказ о назначении № 267 от 03.04.2017
+</div>
+        
     </div>
 
     <div class="full-width-divider"></div>
@@ -1101,21 +1511,27 @@ body::before {
     <!-- БЛОК: О НОТАРИУСЕ + КОНТАКТЫ -->
     <div class="info-section">
         <div class="about-notary">
-            <div class="about-title">О нотариусе</div>
+            <div class="about-title">О НОТАРИУСЕ</div>
+            <div class="about-signature">Елена Викторовна Серебрякова</div>
+
+            <div class="about-divider">
+    <span class="about-diamond"></span>
+</div>
+
             <div class="about-text">
                 Более 15 лет безупречной работы в сфере нотариальных услуг. Индивидуальный подход, 
-                юридическая точность и полное сопровождение сделок любого уровня сложности. 
-                Член Нотариальной палаты, гарантия сохранности документов и конфиденциальности.
+                юридическая точность и полное сопровождение сделок любого уровня сложности.
             </div>
             <div class="about-text">
                 Современные технологии, оперативное оформление и выезд к клиенту 
-                (по предварительной договорённости). Каждая услуга – под защитой закона.
+                (по предварительной договорённости).
             </div>
-            <div class="about-signature">Елена Викторовна Серебрякова, нотариус</div>
+            <a href="#" class="about-btn"><span>Подробнее</span></a>
+            
         </div>
 
         <div class="contact-card">
-            <div class="contact-title">Контактная информация</div>
+            <div class="contact-title">КОНТАКТНАЯ ИНФОРМАЦИЯ</div>
             <div class="contact-item"><span class="contact-icon">📍</span><span class="contact-text">Москва, ул. Тверская, д. 15, офис 302</span></div>
             <div class="contact-item"><span class="contact-icon">📞</span><span class="contact-text">+7 (999) 123-45-67</span></div>
             <div class="contact-item"><span class="contact-icon">✉️</span><span class="contact-text">notary@premiummail.ru</span></div>
